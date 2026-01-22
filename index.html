@@ -3,7 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MD Education | Study Abroad Consultancy</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>MD Education | Study Abroad Consultancy & Career Counseling</title>
+    <meta name="description" content="MD Education is a trusted study abroad consultancy providing expert career counseling, university admissions for MBBS, Engineering, MBA, and visa assistance services.">
+    <meta name="keywords" content="study abroad, education consultancy, MBBS admission, engineering colleges, MBA abroad, career counseling, visa assistance, MD education, foreign universities">
+    <meta name="author" content="MD Education">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.mdeducation.com">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mdeducation.com">
+    <meta property="og:title" content="MD Education | Shape Your Future">
+    <meta property="og:description" content="Your bridge to the best universities worldwide. Expert counseling, seamless admissions, and a brighter tomorrow.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.mdeducation.com">
+    <meta property="twitter:title" content="MD Education | Study Abroad Consultancy">
+    <meta property="twitter:description" content="Expert counseling and admission support for MBBS, Engineering, and Management courses worldwide.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80">
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -108,19 +129,54 @@
 
         /* --- Hero Section --- */
         .hero-section {
-            background: linear-gradient(rgba(12, 36, 97, 0.9), rgba(12, 36, 97, 0.8)), 
-                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 100px 0;
+            /* Removed static background */
             position: relative;
+            color: white;
+            padding: 150px 0;
+            overflow: hidden;
+        }
+
+        /* Slider Styles */
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .carousel-item {
+            height: 100%;
+        }
+
+        .carousel-item img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* Overlay to darken images for text readability */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(12, 36, 97, 0.6); /* Deep Blue overlay */
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3; /* Ensures text is above slider and overlay */
         }
 
         .hero-content h1 {
             font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .hero-content span {
@@ -271,7 +327,8 @@
             background-color: #081a36;
             color: #a4b0be;
             padding: 50px 0 20px;
-            text-align: center;
+            /* Changed from center to left for better multi-column layout */
+            text-align: left; 
         }
 
         .footer-logo {
@@ -287,6 +344,7 @@
             margin-top: 30px;
             padding-top: 20px;
             font-size: 14px;
+            text-align: center; /* Keep copyright centered */
         }
 
         .footer-credits span {
@@ -294,10 +352,62 @@
             font-weight: 500;
         }
 
+        /* --- Why Choose Us Cards --- */
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            text-align: center;
+            border-bottom: 4px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-bottom: 4px solid var(--secondary-orange);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon-circle {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(12, 36, 97, 0.1);
+            color: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 20px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon-circle {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .footer-link {
+            color: #a4b0be;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .footer-link:hover {
+            color: var(--secondary-orange);
+            padding-left: 5px;
+        }
+
         /* Mobile Adjustments */
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.5rem; }
             .process-step { margin-bottom: 30px; }
+            footer { text-align: center; } /* Revert to center on mobile for stacking */
+            .footer-link:hover { padding-left: 0; }
         }
     </style>
 </head>
@@ -330,6 +440,28 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero-section d-flex align-items-center">
+        <!-- Background Slider -->
+        <div id="heroCarousel" class="carousel slide carousel-fade hero-slider" data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-inner h-100">
+                <div class="carousel-item active h-100">
+                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="College Campus">
+                </div>
+                <div class="carousel-item h-100">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Library">
+                </div>
+                <div class="carousel-item h-100">
+                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Lecture Hall">
+                </div>
+                <div class="carousel-item h-100">
+                    <img src="https://images.unsplash.com/photo-1492538368677-f6e0afe31dcc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="University Building">
+                </div>
+            </div>
+        </div>
+
+        <!-- Dark Overlay -->
+        <div class="hero-overlay"></div>
+
+        <!-- Content -->
         <div class="container text-center hero-content">
             <span class="badge bg-warning text-dark mb-3 px-3 py-2 rounded-pill">#1 Education Consultancy</span>
             <h1>Shape Your Future With <br><span>MD Education</span></h1>
@@ -363,36 +495,115 @@
         </div>
     </section>
 
+    <!-- Why Choose Us Section -->
+    <section id="why-choose" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+                <p class="text-muted">Distinctive features that make us the preferred choice</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-circle">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h5>Expert Counselors</h5>
+                        <p class="text-muted small">Certified professionals with years of experience in global education.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-circle">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <h5>Global Network</h5>
+                        <p class="text-muted small">Direct tie-ups with 500+ top-ranked universities worldwide.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-circle">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <h5>Transparent Fees</h5>
+                        <p class="text-muted small">No hidden charges. We maintain 100% financial transparency.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-circle">
+                            <i class="fas fa-plane-departure"></i>
+                        </div>
+                        <h5>Visa Success</h5>
+                        <p class="text-muted small">Proven track record of high visa approval rates for students.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Courses Section -->
-    <section id="courses" class="section-padding bg-light">
+    <section id="courses" class="section-padding">
         <div class="container">
             <div class="section-title">
                 <h2>Our Courses</h2>
                 <p class="text-muted">Explore the top disciplines we specialize in</p>
             </div>
             <div class="row">
-                <div class="col-md-4 mb-4">
+                <!-- Undergraduate -->
+                <div class="col-md-6 col-lg-3 mb-4">
                     <div class="course-card p-4 text-center">
-                        <div class="course-icon"><i class="fas fa-user-md"></i></div>
-                        <h4>MBBS / Medical</h4>
-                        <p class="text-muted">Study MBBS in top government universities abroad with low tuition fees.</p>
-                        <button class="btn btn-sm btn-outline-primary rounded-pill mt-2" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Now</button>
+                        <div class="course-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h4>Undergraduate</h4>
+                        <ul class="list-unstyled mt-3 mb-4 text-muted">
+                            <li class="mb-2 border-bottom pb-2">B.Tech / B.E</li>
+                            <li class="mb-2 border-bottom pb-2">BBA / BCA</li>
+                            <li class="mb-0">BA / B.Sc / B.Com</li>
+                        </ul>
+                        <button class="btn btn-sm btn-outline-primary rounded-pill mt-auto" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Now</button>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
+
+                <!-- Postgraduate -->
+                <div class="col-md-6 col-lg-3 mb-4">
                     <div class="course-card p-4 text-center">
-                        <div class="course-icon"><i class="fas fa-cogs"></i></div>
-                        <h4>Engineering</h4>
-                        <p class="text-muted">Top B.Tech and M.Tech programs in CS, Mechanical, and Civil engineering.</p>
-                        <button class="btn btn-sm btn-outline-primary rounded-pill mt-2" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Now</button>
+                        <div class="course-icon"><i class="fas fa-user-graduate"></i></div>
+                        <h4>Postgraduate</h4>
+                        <ul class="list-unstyled mt-3 mb-4 text-muted">
+                            <li class="mb-2 border-bottom pb-2">M.Tech / MBA / MCA</li>
+                            <li class="mb-2 border-bottom pb-2">MA / M.Sc / M.Com</li>
+                            <li class="mb-0 opacity-0 user-select-none">.</li> <!-- Spacer to align height -->
+                        </ul>
+                        <button class="btn btn-sm btn-outline-primary rounded-pill mt-auto" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Now</button>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
+
+                <!-- Professional -->
+                <div class="col-md-6 col-lg-3 mb-4">
                     <div class="course-card p-4 text-center">
-                        <div class="course-icon"><i class="fas fa-chart-line"></i></div>
-                        <h4>Management (MBA)</h4>
-                        <p class="text-muted">Accelerate your career with globally recognized MBA programs.</p>
-                        <button class="btn btn-sm btn-outline-primary rounded-pill mt-2" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Now</button>
+                        <div class="course-icon"><i class="fas fa-briefcase"></i></div>
+                        <h4>Professional</h4>
+                        <ul class="list-unstyled mt-3 mb-4 text-muted">
+                            <li class="mb-2 border-bottom pb-2">Management & IT</li>
+                            <li class="mb-2 border-bottom pb-2">Healthcare & Training</li>
+                            <li class="mb-0 opacity-0 user-select-none">.</li> <!-- Spacer to align height -->
+                        </ul>
+                        <button class="btn btn-sm btn-outline-primary rounded-pill mt-auto" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Now</button>
+                    </div>
+                </div>
+
+                <!-- Diploma -->
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="course-card p-4 text-center">
+                        <div class="course-icon"><i class="fas fa-certificate"></i></div>
+                        <h4>Diploma</h4>
+                        <ul class="list-unstyled mt-3 mb-4 text-muted">
+                            <li class="mb-2 border-bottom pb-2">Technical Diploma</li>
+                            <li class="mb-2 border-bottom pb-2">Skill-Based Courses</li>
+                            <li class="mb-0 opacity-0 user-select-none">.</li> <!-- Spacer to align height -->
+                        </ul>
+                        <button class="btn btn-sm btn-outline-primary rounded-pill mt-auto" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Now</button>
                     </div>
                 </div>
             </div>
@@ -403,29 +614,33 @@
     <section id="process" class="section-padding">
         <div class="container">
             <div class="section-title">
-                <h2>Our Process</h2>
-                <p class="text-muted">Simple 4-step journey to your admission</p>
+                <h2>Our Simple Admission Process</h2>
+                <p class="text-muted">Your journey to success in 6 simple steps</p>
             </div>
-            <div class="row">
-                <div class="col-md-3 col-6 process-step">
+            <div class="row justify-content-center">
+                <div class="col-lg-2 col-md-4 col-6 process-step mb-4">
                     <div class="step-number">1</div>
-                    <h5>Counseling</h5>
-                    <p class="small text-muted">Free consultation to choose the right path.</p>
+                    <h5 class="fw-bold">Enquiry</h5>
                 </div>
-                <div class="col-md-3 col-6 process-step">
+                <div class="col-lg-2 col-md-4 col-6 process-step mb-4">
                     <div class="step-number">2</div>
-                    <h5>Documentation</h5>
-                    <p class="small text-muted">Verification of all academic documents.</p>
+                    <h5 class="fw-bold">Counseling</h5>
                 </div>
-                <div class="col-md-3 col-6 process-step">
+                <div class="col-lg-2 col-md-4 col-6 process-step mb-4">
                     <div class="step-number">3</div>
-                    <h5>Admission</h5>
-                    <p class="small text-muted">Applying and securing the admission letter.</p>
+                    <h5 class="fw-bold">College Selection</h5>
                 </div>
-                <div class="col-md-3 col-6 process-step">
+                <div class="col-lg-2 col-md-4 col-6 process-step mb-4">
                     <div class="step-number">4</div>
-                    <h5>Visa & Fly</h5>
-                    <p class="small text-muted">Visa processing and travel arrangements.</p>
+                    <h5 class="fw-bold">Verification</h5>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 process-step mb-4">
+                    <div class="step-number">5</div>
+                    <h5 class="fw-bold">Application</h5>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 process-step mb-4">
+                    <div class="step-number">6</div>
+                    <h5 class="fw-bold">Confirmation</h5>
                 </div>
             </div>
         </div>
@@ -477,36 +692,58 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="row g-0 bg-white shadow rounded-4 overflow-hidden">
-                        <div class="col-md-5 bg-primary p-5 text-white d-flex flex-col justify-content-center" style="background-color: var(--primary-blue) !important;">
+                        <div class="col-md-5 bg-primary p-5 text-white d-flex flex-column justify-content-center" style="background-color: var(--primary-blue) !important;">
                             <h3 class="mb-4">Get In Touch</h3>
-                            <div class="mb-4">
-                                <i class="fas fa-map-marker-alt fa-lg mb-2 text-warning"></i>
-                                <p>123 Education Hub, Knowledge Park<br>New Delhi, India</p>
+                            <div class="d-flex mb-4">
+                                <div class="flex-shrink-0 me-3">
+                                    <i class="fas fa-map-marker-alt fa-lg text-warning"></i>
+                                </div>
+                                <p class="mb-0">123 Education Hub, Knowledge Park<br>New Delhi, India</p>
                             </div>
-                            <div class="mb-4">
-                                <i class="fas fa-phone-alt fa-lg mb-2 text-warning"></i>
-                                <p>+91 98765 43210</p>
+                            <div class="d-flex mb-4">
+                                <div class="flex-shrink-0 me-3">
+                                    <i class="fas fa-phone-alt fa-lg text-warning"></i>
+                                </div>
+                                <div>
+                                    <p class="mb-0">+91 98765 43210</p>
+                                </div>
                             </div>
-                            <div class="mb-0">
-                                <i class="fas fa-envelope fa-lg mb-2 text-warning"></i>
-                                <p>info@mdeducation.com</p>
+                            <div class="d-flex mb-0">
+                                <div class="flex-shrink-0 me-3">
+                                    <i class="fas fa-envelope fa-lg text-warning"></i>
+                                </div>
+                                <p class="mb-0">info@mdeducation.com</p>
                             </div>
                         </div>
                         <div class="col-md-7 p-5">
-                            <form>
+                            <!-- Updated Form to match Popup Fields -->
+                            <form onsubmit="handleFormSubmit(event, 'contact-section')">
+                                <div class="mb-3">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" name="name" class="form-control" placeholder="John Doe" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Mobile Number</label>
+                                    <input type="tel" name="mobile" class="form-control" placeholder="+91 XXXXX XXXXX" required>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label">Name</label>
-                                        <input type="text" class="form-control" placeholder="John Doe">
+                                        <label class="form-label">City</label>
+                                        <input type="text" name="city" class="form-control" placeholder="City" required>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label">Email</label>
-                                        <input type="email" class="form-control" placeholder="john@example.com">
+                                        <label class="form-label">Course</label>
+                                        <select name="course" class="form-select">
+                                            <option>MBBS</option>
+                                            <option>Engineering</option>
+                                            <option>MBA</option>
+                                            <option>Other</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Message</label>
-                                    <textarea class="form-control" rows="3" placeholder="How can we help?"></textarea>
+                                    <textarea name="message" class="form-control" rows="3" placeholder="How can we help?"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-custom w-100">Send Message</button>
                             </form>
@@ -520,21 +757,49 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-logo">
-                <span style="color: var(--secondary-orange);">MD</span> Education
-            </div>
-            <p class="mb-4">Your trusted partner in global education.</p>
-            
-            <!-- Social Icons -->
-            <div class="mb-4">
-                <a href="#" class="text-white mx-2"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-white mx-2"><i class="fab fa-linkedin-in"></i></a>
+            <div class="row">
+                <!-- Column 1: Brand & Intro -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-logo">
+                        <span style="color: var(--secondary-orange);">MD</span> - Education
+                    </div>
+                    <p class="mb-4 pe-lg-4">Your path to academic excellence and a successful professional career. We bridge the gap to your future.</p>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5 class="text-white fw-bold mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="footer-link">Home</a></li>
+                        <li><a href="#about" class="footer-link">About Us</a></li>
+                        <li><a href="#courses" class="footer-link">Courses</a></li>
+                        <li><a href="#process" class="footer-link">Process</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Get In Touch -->
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <h5 class="text-white fw-bold mb-3">Get In Touch</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3 d-flex align-items-start justify-content-center justify-content-lg-start">
+                            <i class="fas fa-map-marker-alt text-warning mt-1 me-2"></i>
+                            <span>MD Education, [Your Address Here]</span>
+                        </li>
+                        <li class="mb-3 d-flex align-items-center justify-content-center justify-content-lg-start">
+                            <i class="fas fa-phone text-warning me-2"></i>
+                            <span>+91 85430 54287</span>
+                        </li>
+                        <li class="mb-3 d-flex align-items-center justify-content-center justify-content-lg-start">
+                            <i class="fas fa-envelope text-warning me-2"></i>
+                            <span>info@mdeducation.com</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <div class="footer-credits">
-                <!-- Requested Footer Text -->
-                design by <span>Nexrnn</span> service by <span>md education</span>
+                <p class="mb-2">© 2024 MD Education. All Rights Reserved. | Privacy Policy</p>
+                <p class="mb-0 small" style="opacity: 0.7;">design by <span class="text-white">Nexrnn</span> service by <span class="text-white">md education</span></p>
             </div>
         </div>
     </footer>
@@ -548,29 +813,30 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
-                    <form onsubmit="event.preventDefault(); alert('Thank you! We will contact you soon.');">
+                    <!-- Added name attributes and onsubmit handler -->
+                    <form onsubmit="handleFormSubmit(event, 'popup-modal')">
                         <div class="mb-3">
                             <label class="form-label fw-bold">Full Name</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                <input type="text" class="form-control" required placeholder="Enter your name">
+                                <input type="text" name="name" class="form-control" required placeholder="Enter your name">
                             </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label fw-bold">Mobile Number</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                <input type="tel" class="form-control" required placeholder="+91 XXXXX XXXXX">
+                                <input type="tel" name="mobile" class="form-control" required placeholder="+91 XXXXX XXXXX">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label fw-bold">City</label>
-                                <input type="text" class="form-control" required placeholder="City">
+                                <input type="text" name="city" class="form-control" required placeholder="City">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label fw-bold">Course</label>
-                                <select class="form-select">
+                                <select name="course" class="form-select">
                                     <option>MBBS</option>
                                     <option>Engineering</option>
                                     <option>MBA</option>
@@ -580,7 +846,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label fw-bold">Message</label>
-                            <textarea class="form-control" rows="2" placeholder="Any specific requirements?"></textarea>
+                            <textarea name="message" class="form-control" rows="2" placeholder="Any specific requirements?"></textarea>
                         </div>
                         <button type="submit" class="btn btn-custom w-100 mt-2">Submit Application</button>
                     </form>
@@ -591,6 +857,75 @@
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Firebase Logic -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+        // Initialize Firebase
+        const firebaseConfig = JSON.parse(__firebase_config);
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'md-education-demo';
+
+        // Sign in anonymously for database access
+        signInAnonymously(auth).catch((error) => {
+            console.error("Auth error", error);
+        });
+
+        // Shared Form Handler
+        window.handleFormSubmit = async function(event, source) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerText;
+
+            // Simple validation feedback
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Sending...";
+
+            const formData = {
+                name: form.querySelector('[name="name"]').value,
+                mobile: form.querySelector('[name="mobile"]').value,
+                city: form.querySelector('[name="city"]').value,
+                course: form.querySelector('[name="course"]').value,
+                message: form.querySelector('[name="message"]').value,
+                source: source, // Tracks if it came from 'contact-section' or 'popup-modal'
+                timestamp: new Date()
+            };
+
+            try {
+                // Ensure auth before write
+                if (!auth.currentUser) {
+                    await signInAnonymously(auth);
+                }
+
+                // Write to Firestore (same place for both forms)
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'leads'), formData);
+
+                alert('Thank you! Your details have been submitted successfully.');
+                form.reset();
+
+                // Close modal if applicable
+                if (source === 'popup-modal') {
+                    const modalEl = document.getElementById('applyModal');
+                    const modal = bootstrap.Modal.getInstance(modalEl);
+                    if (modal) modal.hide();
+                }
+
+            } catch (e) {
+                console.error("Error adding document: ", e);
+                alert("Error submitting form. Please try again.");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = originalText;
+            }
+        }
+    </script>
     
     <!-- Custom JS -->
     <script>
